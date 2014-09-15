@@ -1,0 +1,23 @@
+{
+    "name": "jfortunato/fortune-api-bundle",
+    "authors": [
+        {
+            "name": "Justin Fortunato",
+            "email": "jfortunato25@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jfortunato/fortune"
+        }
+    ],
+    "require": {
+        "fortune/fortune": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "JFortunato\\FortuneApiBundle\\": ""
+        }
+    }
+}
