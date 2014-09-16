@@ -15,6 +15,10 @@
     "require": {
         "fortune/fortune": "dev-master"
     },
+    "require-dev": {
+        "behat/behat": "~3.0",
+        "phpspec/phpspec": "~2.1@dev"
+    },
     "autoload": {
         "psr-4": {
             "JFortunato\\FortuneApiBundle\\": ""

@@ -20,9 +20,28 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('fortune_api');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->arrayNode('resources')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('parent')->end()
+                            ->scalarNode('entity')->isRequired()->end()
+                            ->arrayNode('validation')
+                                ->prototype('scalar')
+                                ->end()
+                            ->end()
+                            ->arrayNode('access_control')
+                                ->children()
+                                    ->booleanNode('authentication')->defaultFalse()->end()
+                                    ->scalarNode('role')->defaultNull()->end()
+                                    ->booleanNode('owner')->defaultFalse()->end()
+                                ->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end();
 
         return $treeBuilder;
     }

@@ -1,7 +1,25 @@
 parameters:
-#    fortune_api.example.class: JFortunato\FortuneApiBundle\Example
+    fortune_api.factory.class: JFortunato\FortuneApiBundle\Factory\ResourceFactory
+    fortune_api.factory.config: # set in extension
+    fortune_api.output.class: JFortunato\FortuneApiBundle\Output\SymfonyOutput
+    fortune_api.routing_loader.class: JFortunato\FortuneApiBundle\Routing\SymfonyRouteGenerator
 
 services:
-#    fortune_api.example:
-#        class: %fortune_api.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    fortune_api.factory:
+        class: %fortune_api.factory.class%
+        arguments:
+            - @service_container
+            - @doctrine.orm.entity_manager
+            - %fortune_api.factory.config%
+
+    fortune_api.output:
+        class: %fortune_api.output.class%
+        factory_service: fortune_api.factory
+        factory_method: newSymfonyOutput
+
+    fortune_api.routing_loader:
+        class: %fortune_api.routing_loader.class%
+        factory_service: fortune_api.factory
+        factory_method: newSymfonyRouteGenerator
+        tags:
+            - { name: routing.loader }
