@@ -1,8 +1,8 @@
 parameters:
-    fortune_api.factory.class: JFortunato\FortuneApiBundle\Factory\ResourceFactory
+    fortune_api.factory.class: Fortune\FortuneApiBundle\Factory\ResourceFactory
     fortune_api.factory.config: # set in extension
-    fortune_api.output.class: JFortunato\FortuneApiBundle\Output\SymfonyOutput
-    fortune_api.routing_loader.class: JFortunato\FortuneApiBundle\Routing\SymfonyRouteGenerator
+    fortune_api.output.class: Fortune\FortuneApiBundle\Output\SymfonyOutput
+    fortune_api.routing_loader.class: Fortune\FortuneApiBundle\Routing\SymfonyRouteGenerator
 
 services:
     fortune_api.factory:

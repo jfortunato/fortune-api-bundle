@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\DependencyInjection;
+namespace Fortune\FortuneApiBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -35,7 +35,10 @@ class Configuration implements ConfigurationInterface
                                 ->children()
                                     ->booleanNode('authentication')->defaultFalse()->end()
                                     ->scalarNode('role')->defaultNull()->end()
-                                    ->booleanNode('owner')->defaultFalse()->end()
+                                ->end()
+                            ->end()
+                            ->arrayNode('exclude')
+                                ->prototype('scalar')
                                 ->end()
                             ->end()
                         ->end()

@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\Tests\Controller;
+namespace Fortune\FortuneApiBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

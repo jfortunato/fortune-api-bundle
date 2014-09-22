@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\Routing;
+namespace Fortune\FortuneApiBundle\Routing;
 
 use Fortune\Routing\BaseRouteGenerator;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -87,9 +87,23 @@ class SymfonyRouteGenerator extends BaseRouteGenerator implements LoaderInterfac
 
     protected function baseRoute(ResourceConfiguration $config)
     {
-        $parent = $config->getParent() ?
-            "/{$config->getParent()}/{{$config->getParent()}_id}" : "";
+        $parent = $this->parentRoutesFor($config);
 
         return "{$parent}/{$config->getResource()}";
+    }
+
+    /**
+     * Gets the parents routes for a given child resource.
+     *
+     * @param ResourceConfiguration $config
+     * @return string
+     */
+    protected function parentRoutesFor(ResourceConfiguration $config)
+    {
+        if ($config->getParent()) {
+            $parentConfig = $this->configuration->resourceConfigurationFor($config->getParent());
+
+            return $this->parentRoutesFor($parentConfig) . "/{$config->getParent()}/{{$config->getParent()}_id}";
+        }
     }
 }

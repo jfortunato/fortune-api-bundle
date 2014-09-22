@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\Security;
+namespace Fortune\FortuneApiBundle\Security;
 
 use Fortune\Security\Bouncer\AuthenticationBouncer;
 use Fortune\Configuration\ResourceConfiguration;

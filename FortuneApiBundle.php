@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle;
+namespace Fortune\FortuneApiBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

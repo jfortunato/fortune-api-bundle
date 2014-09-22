@@ -1,6 +1,6 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\Output;
+namespace Fortune\FortuneApiBundle\Output;
 
 use Fortune\Output\BaseOutput;
 use Symfony\Component\HttpFoundation\Request;

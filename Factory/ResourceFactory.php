@@ -1,19 +1,18 @@
 <?php
 
-namespace JFortunato\FortuneApiBundle\Factory;
+namespace Fortune\FortuneApiBundle\Factory;
 
 use Fortune\ResourceFactory as BaseFactory;
-use JFortunato\FortuneApiBundle\Output\SymfonyOutput;
+use Fortune\FortuneApiBundle\Output\SymfonyOutput;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\DependencyInjection\Container;
 use Fortune\Security\Security;
 use Fortune\Security\Bouncer\ParentBouncer;
-use JFortunato\FortuneApiBundle\Security\SymfonyAuthenticationBouncer;
-use JFortunato\FortuneApiBundle\Security\SymfonyRoleBouncer;
-use JFortunato\FortuneApiBundle\Security\SymfonyOwnerBouncer;
-use JFortunato\FortuneApiBundle\Routing\SymfonyRouteGenerator;
+use Fortune\FortuneApiBundle\Security\SymfonyAuthenticationBouncer;
+use Fortune\FortuneApiBundle\Security\SymfonyRoleBouncer;
+use Fortune\FortuneApiBundle\Routing\SymfonyRouteGenerator;
 
 class ResourceFactory extends BaseFactory
 {
@@ -51,7 +50,6 @@ class ResourceFactory extends BaseFactory
         return new Security(
             new SymfonyAuthenticationBouncer($security, $config),
             new SymfonyRoleBouncer($security, $config),
-            new SymfonyOwnerBouncer($config),
             new ParentBouncer($config)
         );
     }
