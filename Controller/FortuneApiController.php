@@ -50,16 +50,9 @@ class FortuneApiController extends Controller
     {
         $request = $this->container->get('request');
 
-        $pathInfo = explode('/', trim($request->getPathInfo(), '/'));
+        $routeParams = $request->attributes->get('_route_params');
 
-        $identifiers = array();
-        foreach ($pathInfo as $key => $value) {
-            if ($key % 2) {
-                $identifiers[] = $value;
-            }
-        }
-
-        return $identifiers;
+        return array_values($routeParams);
     }
 
     protected function execute($method)
