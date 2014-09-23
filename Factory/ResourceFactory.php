@@ -13,6 +13,9 @@ use Fortune\Security\Bouncer\ParentBouncer;
 use Fortune\FortuneApiBundle\Security\SymfonyAuthenticationBouncer;
 use Fortune\FortuneApiBundle\Security\SymfonyRoleBouncer;
 use Fortune\FortuneApiBundle\Routing\SymfonyRouteGenerator;
+use Fortune\Configuration\ResourceConfiguration;
+use Fortune\FortuneApiBundle\Validator\SymfonyResourceValidator;
+use Fortune\Validator\YamlResourceValidator;
 
 class ResourceFactory extends BaseFactory
 {
@@ -52,5 +55,16 @@ class ResourceFactory extends BaseFactory
             new SymfonyRoleBouncer($security, $config),
             new ParentBouncer($config)
         );
+    }
+
+    protected function newValidator(ResourceConfiguration $config)
+    {
+        $class = $config->getValidatorClass();
+
+        return $config->isUsingYamlValidation() ?
+            new YamlResourceValidator($config->getYamlValidation())
+            :
+            new SymfonyResourceValidator(new $class(), $this->container->get('form.factory'))
+            ;
     }
 }

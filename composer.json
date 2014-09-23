@@ -6,8 +6,14 @@
             "email": "jfortunato25@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/jfortunato/fortune"
+        }
+    ],
     "require": {
-        "fortune/fortune": "~0.1"
+        "fortune/fortune": "dev-develop"
     },
     "require-dev": {
         "behat/behat": "~3.0",
